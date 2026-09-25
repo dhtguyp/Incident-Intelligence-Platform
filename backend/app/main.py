@@ -6,7 +6,7 @@ from fastapi.staticfiles import StaticFiles
 
 from app.database import engine, Base
 from app.seed import seed_database, SessionLocal
-from app.api import incidents
+from app.api import incidents, search
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -35,6 +35,7 @@ app.add_middleware(
 
 # Register API Routers
 app.include_router(incidents.router)
+app.include_router(search.router)
 
 @app.get("/api/health")
 async def health_check():

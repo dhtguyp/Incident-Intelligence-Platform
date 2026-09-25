@@ -125,6 +125,7 @@ docker compose exec app uv run pytest tests/
 | Method | Endpoint | Description |
 |---|---|---|
 | `GET` | `/api/health` | Service health status check |
+| `POST` | `/api/search` | Semantic search over indexed operational knowledge with optional service and document-type filters |
 | `GET` | `/api/incidents` | List all incidents with affected services |
 | `GET` | `/api/incidents/{incident_id}` | Get metadata for a specific incident |
 | `GET` | `/api/incidents/{incident_id}/timeline` | Get chronological event, deployment, and metric evidence for an incident |
