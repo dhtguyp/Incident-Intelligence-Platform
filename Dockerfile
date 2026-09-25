@@ -20,8 +20,9 @@ COPY backend/pyproject.toml backend/uv.lock ./
 # Install dependencies using uv
 RUN uv sync --frozen --no-dev --no-install-project
 
-# Copy backend source code
+# Copy backend source code and tests
 COPY backend/app/ ./app/
+COPY backend/tests/ ./tests/
 
 # Copy built frontend assets to a static folder that FastAPI will serve
 COPY --from=frontend-builder /app/frontend/dist ./static

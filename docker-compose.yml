@@ -11,6 +11,7 @@ services:
       - ./data:/data
     environment:
       - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - DATA_DIR=/data
     depends_on:
       - qdrant
 
