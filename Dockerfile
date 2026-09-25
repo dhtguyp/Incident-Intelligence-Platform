@@ -22,6 +22,7 @@ RUN uv sync --frozen --no-dev --no-install-project
 
 # Copy backend source code and tests
 COPY backend/app/ ./app/
+COPY backend/knowledge/ ./knowledge/
 COPY backend/tests/ ./tests/
 
 # Copy built frontend assets to a static folder that FastAPI will serve

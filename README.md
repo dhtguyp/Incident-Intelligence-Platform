@@ -40,7 +40,7 @@ An full-stack **AI-assisted incident investigation platform** that helps SREs an
 - **Databases**:
   - **SQLite**: Structured operational metadata (incidents, services, events, deployments, metrics)
   - **Qdrant**: Vector storage for unstructured knowledge chunks (runbooks, logs, postmortems)
-- **AI / LLM**: Google Gemini API (`gemini-1.5-flash` / `text-embedding-004`)
+- **AI / LLM**: Google Gemini API (`gemini-1.5-flash` / `gemini-embedding-001`)
 - **Deployment**: Docker & Docker Compose (Multi-stage build)
 
 ---

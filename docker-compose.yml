@@ -12,6 +12,7 @@ services:
     environment:
       - GEMINI_API_KEY=${GEMINI_API_KEY}
       - DATA_DIR=/data
+      - QDRANT_URL=http://qdrant:6333
     depends_on:
       - qdrant
 
