@@ -82,10 +82,17 @@ This starts:
 
 ## 🧪 Testing
 
-Run backend unit tests inside the running Docker container:
+A test runner script `test.sh` is provided to run both backend (Pytest) and frontend (Vitest) test suites cleanly using Docker:
 
 ```bash
-docker compose exec app uv run pytest tests/
+# Run all tests (backend + frontend)
+./test.sh
+
+# Run backend tests only
+./test.sh backend
+
+# Run frontend tests only
+./test.sh frontend
 ```
 
 ---
