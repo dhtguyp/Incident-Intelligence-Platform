@@ -1,7 +1,7 @@
 from datetime import timedelta
 from typing import List, Optional
 from sqlalchemy.orm import Session, joinedload
-from app.models.models import Incident, Event, Deployment, MetricSnapshot
+from app.models.models import Incident, Event, Deployment, MetricSnapshot, Service
 from app.models.schemas import TimelineItem
 
 class IncidentRepository:
@@ -92,3 +92,21 @@ class IncidentRepository:
         # Sort combined timeline chronologically
         timeline.sort(key=lambda x: x.timestamp)
         return timeline
+
+    @staticmethod
+    def get_nearby_incidents(db: Session, incident: Incident, limit: int = 5) -> List[Incident]:
+        """Return recent incidents that overlap with an affected service."""
+        service_ids = [service.id for service in incident.affected_services]
+        if not service_ids:
+            return []
+        return (
+            db.query(Incident)
+            .options(joinedload(Incident.affected_services))
+            .filter(
+                Incident.id != incident.id,
+                Incident.affected_services.any(Service.id.in_(service_ids)),
+            )
+            .order_by(Incident.started_at.desc())
+            .limit(limit)
+            .all()
+        )
