@@ -37,7 +37,7 @@ app.add_middleware(
 app.include_router(incidents.router)
 app.include_router(search.router)
 
-@app.get("/api/health")
+@app.get("/health")
 async def health_check():
     return {"status": "ok", "message": "Backend is running"}
 
